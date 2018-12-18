@@ -6,7 +6,7 @@ export class GuiModel {
 
     private _guiModel = {
         "application": {
-            "title": "Requirements Engineering Friend Tracker",
+            "title": "Dejan's frend treker",
             "formList": [
                 {
                     "id": "FriendForm",
@@ -28,7 +28,14 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id":   "location",
+                            "id": "nickname",
+                            "type": "text",
+                            "name": "Nickname",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "location",
                             "type": "autocomplete",
                             "name": "Location",
                             "url": "/location",
@@ -95,7 +102,7 @@ export class GuiModel {
                     "url": "/friend/:friendKey/activity",
                     "formFieldList": [
                         {
-                            "id":   "activity",
+                            "id": "activity",
                             "type": "autocomplete",
                             "name": "Activity",
                             "url": "/activity",
@@ -118,6 +125,21 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "GroupForm",
+                    "title": "Group", "url": "/group",
+                    "formFieldList": [{
+                        "id": "name", "type": "text",
+                        "name": "GroupName",
+                        "width": 2, "required": true
+                    }, {
+                        "type": "deleteButton", "name": "Delete"
+                    }, {
+                        "type": "cancelButton", "name": "Cancel"
+                    }, {
+                        "type": "okButton", "name": "Ok"
+                    }]
+                }
             ],
             "pageList": [
                 {
@@ -127,16 +149,23 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Friends",
-                            "icon": "fa-user",
-                            "color": "blue",
+                            "icon": "fa-user-o",
+                            "color": "pumpkin",
                             "page": "friendspage",
                         },
                         {
                             "type": "button",
                             "name": "Location",
-                            "icon": "fa-cubes",
-                            "color": "yellow",
+                            "icon": "fa-map-pin",
+                            "color": "turquoise",
                             "page": "locationspage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Groups",
+                            "icon": "fa-wheelchair",
+                            "color": "magenta",
+                            "page": "groupspage",
                         },
                     ]
                 },
@@ -177,7 +206,7 @@ export class GuiModel {
                             "type": "newButton",
                             "name": "NewLocation",
                             "icon": "fa-home",
-                            "color": "green",
+                            "color": "purple",
                             "width": 2,
                             "form": {
                                 "form": "LocationForm"
@@ -195,6 +224,33 @@ export class GuiModel {
                         },
                     ]
                 },
+                {
+                    "id": "groupspage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewGroup",
+                            "icon": "fa-handshake-o",
+                            "color": "green",
+                            "form": {
+                                "form": "GroupForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-wheelchair",
+                            "color": "teal",
+                            "search": true,
+                            "url": "/group",
+                            "form": {
+                                "form": "GroupForm"
+                            }
+                        },
+                    ]
+                }
             ]
         }
     };
